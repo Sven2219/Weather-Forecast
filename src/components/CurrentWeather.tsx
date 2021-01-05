@@ -1,15 +1,14 @@
 import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
-import { IMAGE_SIZE } from '../helpers/constants';
-import { IData } from '../helpers/interfaces';
-
+import { IMAGE_SIZE } from '../helpers/global/constants';
+import { IData } from '../helpers/global/interfaces';
 interface IProps {
     currentWeather: IData;
 }
 
 const CurrentWeather = ({ currentWeather }: IProps): JSX.Element => {
     return (
-        <View style={styles.mainContainer}>
+        <View >
             <Text style={styles.weatherDescriptionText}>{currentWeather.weather.description}</Text>
             <View style={styles.informationContainer}>
                 <View style={styles.temperatureContainer}>
@@ -31,9 +30,7 @@ const CurrentWeather = ({ currentWeather }: IProps): JSX.Element => {
 }
 
 const styles = StyleSheet.create({
-    mainContainer: {
-        marginTop: 25
-    },
+
     informationContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between'

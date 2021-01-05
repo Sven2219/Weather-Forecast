@@ -13,7 +13,9 @@
     "axios": "^0.21.1",
     "react": "16.13.1",
     "react-native": "0.63.4",
-    "react-native-get-location": "^2.0.0"
+    "react-native-chart-kit": "^6.9.0",
+    "react-native-get-location": "^2.0.0",
+    "react-native-svg": "^12.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",

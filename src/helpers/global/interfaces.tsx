@@ -22,3 +22,7 @@ export interface IUserLocation {
     latitude: number;
     longitude: number;
 }
+export interface IGraph {
+    labels: string[];
+    values: number[];
+}

@@ -1,4 +1,4 @@
-import { days } from "../../helpers/days";
+import { days } from "./days";
 
 export const getDay = (datetime:string): string => {
     const date = new Date(datetime);

@@ -37,3 +37,28 @@ export const data: any = [{
     min_temp: 3.5,
 }
 ]
+export const forecast=[
+    {temp:10,datetime:"2021-01-05:03"},
+    {temp:10,datetime:"2021-01-05:06"},
+    {temp:10,datetime:"2021-01-05:09"},
+    {temp:10,datetime:"2021-01-05:12"},
+    {temp:10,datetime:"2021-01-05:15"},
+    {temp:10,datetime:"2021-01-05:18"},
+    {temp:10,datetime:"2021-01-05:21"},
+    {temp:10,datetime:"2021-01-05:00"},
+    {temp:10,datetime:"2021-01-05:03"},
+    {temp:10,datetime:"2021-01-05:06"},
+    {temp:10,datetime:"2021-01-05:09"},
+    {temp:10,datetime:"2021-01-05:12"},
+    {temp:10,datetime:"2021-01-05:15"},
+    {temp:10,datetime:"2021-01-05:18"},
+    {temp:10,datetime:"2021-01-05:21"},
+    {temp:10,datetime:"2021-01-05:00"},
+    {temp:10,datetime:"2021-01-05:03"},
+    {temp:10,datetime:"2021-01-05:06"},
+    {temp:10,datetime:"2021-01-05:09"},
+    {temp:10,datetime:"2021-01-05:12"},
+    {temp:10,datetime:"2021-01-05:15"},
+    {temp:10,datetime:"2021-01-05:18"},
+    {temp:10,datetime:"2021-01-05:21"}
+    ]

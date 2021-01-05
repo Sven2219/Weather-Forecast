@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { DispatchDayIndex } from '../../context/DispatchDayIndex';
 import { MainState } from '../../context/MainState';
-import { IMAGE_SIZE, ITEM_HEIGHT, ITEM_WIDTH } from '../../helpers/constants';
-import { IData } from '../../helpers/interfaces';
+import { IMAGE_SIZE, ITEM_HEIGHT, ITEM_WIDTH } from '../../helpers/global/constants';
+import { IData } from '../../helpers/global/interfaces';
 import { getBorderWidth, getDay } from './getters';
 
 interface IProps {
