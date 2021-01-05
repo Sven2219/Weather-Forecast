@@ -6,9 +6,9 @@ interface IProps {
     currentWeather: IData;
 }
 
-const CurrentWeather = ({ currentWeather }: IProps): JSX.Element => {
+const CurrentWeatherInfo = ({ currentWeather }: IProps): JSX.Element => {
     return (
-        <View >
+        <View>
             <Text style={styles.weatherDescriptionText}>{currentWeather.weather.description}</Text>
             <View style={styles.informationContainer}>
                 <View style={styles.temperatureContainer}>
@@ -16,13 +16,9 @@ const CurrentWeather = ({ currentWeather }: IProps): JSX.Element => {
                     <Text style={styles.temperatureText}>{currentWeather.temp}&#176;</Text>
                 </View>
                 <View style={styles.otherInformation}>
-                    <View style={{ alignItems: 'center', marginRight: 30 }}>
-                        <Text >Oborine</Text>
-                        <Text>10</Text>
-                    </View>
-                    <View style={{ alignItems: 'center' }}>
-                        <Text>Vjetar</Text>
-                        <Text>10</Text>
+                    <View style={styles.windTextPosition}>
+                        <Text style={styles.windText}>Wind</Text>
+                        <Text style={styles.windText}>{(currentWeather.wind_spd).toPrecision(1)} km/h</Text>
                     </View>
                 </View>
             </View>
@@ -58,7 +54,14 @@ const styles = StyleSheet.create({
     otherInformation: {
         padding: 20,
         alignItems: 'center',
-        flexDirection: 'row'
+    },
+    windText: {
+        fontSize: 16,
+        letterSpacing: 1.3,
+    },
+    windTextPosition: {
+        alignItems: 'center',
+        marginRight: 30
     }
 })
-export default CurrentWeather;
+export default CurrentWeatherInfo;

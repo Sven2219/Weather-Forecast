@@ -10,6 +10,7 @@ target 'Wheather' do
 
   pod 'ReactNativeGetLocation', :path => '../node_modules/react-native-get-location'
 
+
   target 'WheatherTests' do
     inherit! :complete
     # Pods for testing

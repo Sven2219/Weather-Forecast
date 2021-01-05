@@ -4,9 +4,10 @@ interface IProps {
     city_name: string;
 }
 const CityName = ({ city_name }: IProps): JSX.Element => {
-    return (<View style={styles.namePosition}>
-        <Text style={styles.nameStyle}>{city_name}</Text>
-    </View>)
+    return (
+        <View style={styles.namePosition}>
+            <Text style={styles.nameStyle}>{city_name}</Text>
+        </View>)
 }
 const styles = StyleSheet.create({
     namePosition: {
@@ -14,8 +15,9 @@ const styles = StyleSheet.create({
         padding: 15
     },
     nameStyle: {
-        fontSize: 18,
-        letterSpacing: 1.3,
+        fontSize: 20,
+        letterSpacing: 1.4,
+        fontWeight:'bold',
         textTransform: 'uppercase',
         color: '#000'
     }

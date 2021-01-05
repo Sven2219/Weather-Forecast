@@ -2,10 +2,9 @@ import { IUserLocation, IWeather } from "../helpers/global/interfaces";
 
 export interface IState {
     dayIndex: number;
-    temperatureIndex: number;
+    forecastIndex: number;
     userLocation: IUserLocation | null;
     detailedDailyForecasts: IWeather | null;
-
 }
 
 export type setDayIndex = {
@@ -13,9 +12,8 @@ export type setDayIndex = {
     readonly payload: number;
 }
 
-
-export type setTemperatureIndex = {
-    readonly type: "setTemperatureIndex";
+export type setForecastIndex = {
+    readonly type: "setForecastIndex";
     readonly payload: number;
 }
 
@@ -24,14 +22,14 @@ type setInitialValues = {
     readonly userLocation: IUserLocation;
     readonly detailedDailyForecasts: IWeather;
 }
-export type Actions = setDayIndex | setTemperatureIndex | setInitialValues;
+export type Actions = setDayIndex | setForecastIndex | setInitialValues ;
 
 export const reducer = (state: IState, actions: Actions): IState => {
     switch (actions.type) {
         case "setDayIndex":
             return { ...state, dayIndex: actions.payload };
-        case "setTemperatureIndex":
-            return { ...state, temperatureIndex: actions.payload };
+        case "setForecastIndex":
+            return { ...state, forecastIndex: actions.payload };
         case "setInitialValues":
             return { ...state, userLocation: actions.userLocation, detailedDailyForecasts: actions.detailedDailyForecasts };
         default:

@@ -1253,7 +1253,7 @@
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.3.tgz#2ab0d5da2e5815f94b0b9d4b95d1e5f243ab2ca7"
   integrity sha512-KfRL3PuHmqQLOG+2tGpRO26Ctg+Cq1E01D2DMriKEATHgWLfeNDmq9e29Q9WIky0dQ3NPkd1mzYH8Lm936Z9qw==
 
-"@types/react-native@^0.63.43":
+"@types/react-native@*", "@types/react-native@^0.63.43":
   version "0.63.43"
   resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.63.43.tgz#0278dd540f8479b35ae5d6ef373dd9b3be4cffb1"
   integrity sha512-zFD+rFf7xmk3ZL5laaGdWB8NLNoN36TjHc2M5PcT5gXcDk7ZJBPsiabNcPDQPSIU/om8YPwBpaFdd1IiyuIM+g==
@@ -5755,6 +5755,11 @@ react-is@^17.0.1:
   version "17.0.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.1.tgz#5b3531bd76a645a4c9fb6e693ed36419e3301339"
   integrity sha512-NAnt2iGDXohE5LI7uBnLnqvLQMtzhkiAOLXTmv+qnF9Ky7xAPcX8Up/xWIhxvLVGJvuLiNc4xQLtuqDRzb4fSA==
+
+react-native-android-location-services-dialog-box@^2.8.2:
+  version "2.8.2"
+  resolved "https://registry.yarnpkg.com/react-native-android-location-services-dialog-box/-/react-native-android-location-services-dialog-box-2.8.2.tgz#41d3dd1203cf635a5ef6ee81a1eb75dd20fd5c6f"
+  integrity sha512-zBTi0xJQoF6GdImRhXOCXezYuALlPgbctqG3eOrZu63hdrlvTBhqATkb6DB5JM9kpcMbX1skMIOI3m71zKGsPA==
 
 react-native-chart-kit@^6.9.0:
   version "6.9.0"

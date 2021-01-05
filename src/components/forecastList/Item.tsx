@@ -17,7 +17,6 @@ const Item = ({ item, index }: IProps): JSX.Element => {
     const setIndex = (): void => {
         setDayIndex({ type: "setDayIndex", payload: index });
     }
-
     return (
         <TouchableOpacity onPress={setIndex}>
             <View style={[styles.mainContainer, styles.shadow, { borderWidth: getBorderWidth(index, state.dayIndex) }]}>

@@ -5,60 +5,66 @@ import { DispatchDayIndex } from '../context/DispatchDayIndex';
 import { MainState } from '../context/MainState';
 import { StyleSheet, View } from 'react-native';
 import ForecastGraph from '../components/ForecastGraph';
-import { DispatchTemperatureIndex } from '../context/DispatchTemperatureIndex';
-import { getDetailedDailyForecast, getUserLocation } from '../helpers/main/getInitialValues';
+import { DispatchForecastIndex } from '../context/DispatchForecastIndex';
+import { getDetailedDailyForecast, getUserLocation } from '../helpers/main/fetchData';
 import CityName from '../components/CityName';
-import CurrentWeather from '../components/CurrentWeather';
+import CurrentWeatherInfo from '../components/CurrentWeatherInfo';
+import StartMessage from '../components/StartMessage';
+import { IUserLocation, IWeather } from '../helpers/global/interfaces';
 
-const Main = (): JSX.Element | null => {
+
+const Main = (): JSX.Element => {
     const [state, dispatch] = useReducer<React.Reducer<IState, Actions>>(reducer, {
         detailedDailyForecasts: null,
         dayIndex: 0,
-        temperatureIndex: 0,
+        forecastIndex: 0,
         userLocation: null,
     }
     );
     useEffect(() => {
-        setInitialValues()
+        fetchDataByLocation()
     }, [])
-    const setInitialValues = async (): Promise<void> => {
+
+    const fetchDataByLocation = async (): Promise<void> => {
         try {
-            const userLocation = await getUserLocation();
+            const userLocation: IUserLocation | undefined = await getUserLocation();
             if (userLocation !== undefined) {
-                const detailedDailyForecasts = await getDetailedDailyForecast(userLocation);
-                dispatch({ type: "setInitialValues", userLocation: userLocation, detailedDailyForecasts: detailedDailyForecasts })
+                const detailedDailyForecasts: IWeather | undefined = await getDetailedDailyForecast(userLocation);
+                if (detailedDailyForecasts !== undefined) {
+                    dispatch({ type: "setInitialValues", userLocation: userLocation, detailedDailyForecasts: detailedDailyForecasts })
+                }
             }
         } catch (error) {
             console.log(error)
         }
     }
-    const showCurrentWeather = () => {
-        let index: number = state.dayIndex === 0 ? state.temperatureIndex : state.dayIndex * state.temperatureIndex;
-        if (state.detailedDailyForecasts !== null)
+    const showCurrentWeather = (): JSX.Element | null => {
+        if (state.detailedDailyForecasts !== null) {
             return (
-                <CurrentWeather currentWeather={state.detailedDailyForecasts.data[index]} />
+                <CurrentWeatherInfo currentWeather={state.detailedDailyForecasts.data[state.forecastIndex]} />
             )
+        }
+        return null;
     }
     if (state.detailedDailyForecasts !== null) {
         return (
             <View style={styles.mainContainer}>
                 <CityName city_name={state.detailedDailyForecasts.city_name} />
                 {showCurrentWeather()}
-                <DispatchTemperatureIndex.Provider value={{ setTemperatureIndex: dispatch }}>
+                <DispatchForecastIndex.Provider value={{ setForecastIndex: dispatch }}>
                     <MainState.Provider value={{ state }}>
                         <ForecastGraph />
                     </MainState.Provider>
-                </DispatchTemperatureIndex.Provider>
+                </DispatchForecastIndex.Provider>
                 <DispatchDayIndex.Provider value={{ setDayIndex: dispatch }}>
                     <MainState.Provider value={{ state }}>
-                        < DailyForecast />
+                        <DailyForecast />
                     </MainState.Provider>
                 </DispatchDayIndex.Provider>
             </View>
         )
     }
-    //spinner goes here
-    return null;
+    return <StartMessage size={40} />;
 }
 
 const styles = StyleSheet.create({

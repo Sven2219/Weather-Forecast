@@ -4,16 +4,13 @@ import { IData } from '../../helpers/global/interfaces';
 import axios from 'axios';
 import { MainState } from '../../context/MainState';
 import Item from './Item';
-import { data } from '../../helpers/testing';
-
-
 
 const DailyForecast = (): JSX.Element => {
     const [dailyForecast, setDailyForecast] = useState<IData[] | null>(null)
     const { state } = useContext(MainState);
-    useEffect(()=>{
+    useEffect(() => {
         getDailyForecast();
-    },[])
+    }, [])
     const getDailyForecast = async (): Promise<void> => {
         try {
             if (state.userLocation !== null) {
@@ -38,7 +35,7 @@ const DailyForecast = (): JSX.Element => {
     }
     return (
         <FlatList
-            data={data}
+            data={dailyForecast}
             keyExtractor={(item, index) => index.toString()}
             horizontal
             showsHorizontalScrollIndicator={false}

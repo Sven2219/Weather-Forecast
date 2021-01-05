@@ -1,7 +1,7 @@
 import axios from "axios";
-import { IUserLocation } from "../global/interfaces";
+import { IUserLocation, IWeather } from "../global/interfaces";
 import GetLocation from 'react-native-get-location'
-export const getUserLocation = async () => {
+export const getUserLocation = async (): Promise<GetLocation.Location | undefined> => {
     try {
         const userLocation = await GetLocation.getCurrentPosition({
             enableHighAccuracy: true,
@@ -13,7 +13,7 @@ export const getUserLocation = async () => {
     }
 }
 
-export const getDetailedDailyForecast = async (userLocation: IUserLocation) => {
+export const getDetailedDailyForecast = async (userLocation: IUserLocation): Promise<IWeather | undefined> => {
     try {
         const response = await axios.get('https://weatherbit-v1-mashape.p.rapidapi.com/forecast/3hourly',
             {
