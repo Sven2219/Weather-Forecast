@@ -95,12 +95,14 @@ const Main = (): JSX.Element => {
         )
     }
     else if (state.locationErrorMessage !== "") {
-        return (<View style={[styles.mainContainer,styles.errorPosition]}>
-            <Text style={styles.errorText}>{state.locationErrorMessage}</Text>
-            <TouchableOpacity onPress={setUserLocation} style={[styles.buttonContainer,styles.shadow]}>
-                <Text style={[styles.errorText,styles.retryText]}>Retry</Text>
-            </TouchableOpacity>
-        </View>)
+        return (
+            <View style={[styles.mainContainer, styles.errorPosition]}>
+                <Text style={styles.errorText}>{state.locationErrorMessage}</Text>
+                <TouchableOpacity onPress={setUserLocation} style={[styles.buttonContainer, styles.shadow]}>
+                    <Text style={[styles.errorText, styles.retryText]}>Retry</Text>
+                </TouchableOpacity>
+            </View>
+        )
     }
     return <StartMessage size={40} />
 }
@@ -110,26 +112,26 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff'
     },
-    errorPosition:{
-        justifyContent:'center',
-        alignItems:'center'
+    errorPosition: {
+        justifyContent: 'center',
+        alignItems: 'center'
     },
-    errorText:{
-        fontSize:18,
-        letterSpacing:1.3,
-        textAlign:'center'
+    errorText: {
+        fontSize: 18,
+        letterSpacing: 1.3,
+        textAlign: 'center'
     },
-    retryText:{
-        fontWeight:'bold',
+    retryText: {
+        fontWeight: 'bold',
     },
-    buttonContainer:{
-        top:RETRY_BUTTON_HEIGHT,
-        width:RETRY_BUTTON_WIDTH,
-        height:RETRY_BUTTON_HEIGHT,
-        alignItems:'center',
-        justifyContent:'center',
-        borderRadius:5,
-        backgroundColor:'#fff'
+    buttonContainer: {
+        top: RETRY_BUTTON_HEIGHT,
+        width: RETRY_BUTTON_WIDTH,
+        height: RETRY_BUTTON_HEIGHT,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 5,
+        backgroundColor: '#fff'
     },
     shadow: {
         shadowColor: "#000",

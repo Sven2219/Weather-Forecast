@@ -8,16 +8,16 @@ interface IProps {
 }
 
 const CurrentWeatherInfo = ({ currentWeather }: IProps): JSX.Element => {
-    const getCurrentTime = ():string => {
-        const day: string = getDay(currentWeather.datetime.slice(0,10));
+    const getCurrentTime = (): string => {
+        const day: string = getDay(currentWeather.datetime.slice(0, 10));
         const hours: string = currentWeather.datetime.slice(-2) + ":" + "00";
-        return day + "  " + hours+"h";
+        return day + "  " + hours + "h";
     }
     return (
         <View>
-            <View style={{flexDirection:'row',justifyContent:'space-between'}}>
-            <Text style={[styles.weatherDescriptionText]}>{currentWeather.weather.description}</Text>
-            <Text style={[styles.weatherDescriptionText]}>{getCurrentTime()}</Text>
+            <View style={styles.weatherDescriptionContainer}>
+                <Text style={[styles.weatherDescriptionText]}>{currentWeather.weather.description}</Text>
+                <Text style={[styles.weatherDescriptionText]}>{getCurrentTime()}</Text>
             </View>
             <View style={styles.informationContainer}>
                 <View style={styles.temperatureContainer}>
@@ -39,11 +39,15 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between'
     },
+    weatherDescriptionContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
     weatherDescriptionText: {
         fontSize: 16,
         color: '#696969',
-        padding:10,
-        marginRight:10
+        padding: 10,
+        marginRight: 10
     },
     imageSize: {
         width: IMAGE_SIZE,

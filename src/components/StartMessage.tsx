@@ -5,25 +5,25 @@ interface IProps {
 }
 const StartMessage = ({ size }: IProps): JSX.Element => {
     return (
-        <View style={styles.spinnerStyle}>
+        <View style={styles.mainContainer}>
             <Text style={styles.textStyle}>Retrieving temperature from your location</Text>
             <ActivityIndicator size={size} color={'#000000'} />
         </View>
     )
 }
 const styles = StyleSheet.create({
-    spinnerStyle: {
+    mainContainer: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor:'#fff',
+        backgroundColor: '#fff',
     },
-    textStyle:{
-        fontSize:17,
-        letterSpacing:1.3,
-        fontWeight:'bold',
-        textAlign:'center',
-        bottom:20
+    textStyle: {
+        fontSize: 17,
+        letterSpacing: 1.3,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        bottom: 20
     }
 })
 export default StartMessage;
