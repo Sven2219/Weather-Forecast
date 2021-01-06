@@ -4,7 +4,7 @@ import { DispatchForecastIndex } from '../context/MainDispatch';
 import { MainState } from '../context/MainState';
 import { chartConfig } from '../helpers/weatherForecastGraph/chartConfig';
 import { getFirstTimeZeroHours } from '../helpers/weatherForecastGraph/getFirstTimeZeroHours';
-import { getGraphData } from '../helpers/weatherForecastGraph/sliceData';
+import { getGraphData } from '../helpers/weatherForecastGraph/getGraphData';
 import { NUMBER_OF_POINTS_IN_GRAPH, width } from '../helpers/global/constants';
 import { IGraph } from '../helpers/global/interfaces';
 import { StyleSheet } from 'react-native';
@@ -22,7 +22,7 @@ const WeatherForecastGraph = (): JSX.Element | null => {
     }, [])
     useEffect(() => {
         if (state.detailedDailyForecasts !== null) {
-            const graphData: IGraph = getGraphData(state.detailedDailyForecasts, state.dayIndex, firstTimeZeroHours.current);
+            const graphData: IGraph = getGraphData(state.detailedDailyForecasts.data, state.dayIndex, firstTimeZeroHours.current);
             setGraphData(graphData);
             updateTemperatureIndex();
         }
