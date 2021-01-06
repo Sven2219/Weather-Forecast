@@ -3,7 +3,7 @@ export const chartConfig = {
     backgroundGradientFromOpacity: 0,
     backgroundGradientTo: "#fff",
     backgroundGradientToOpacity: 0,
-    color: (opacity = 1) => `rgba(237,233,164,${opacity})`,
+    color: (opacity = 1) => `rgba(188,159,10,${opacity})`,
     labelColor: (opacity = 1) => `rgba(135, 135, 135, ${opacity})`,
     decimalPlaces: 1,
     strokeWidth: 3, 

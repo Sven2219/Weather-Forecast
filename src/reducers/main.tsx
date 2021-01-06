@@ -5,6 +5,8 @@ export interface IState {
     forecastIndex: number;
     userLocation: IUserLocation | null;
     detailedDailyForecasts: IWeather | null;
+    spinnerFlag: boolean;
+    locationErrorMessage: string;
 }
 
 export type setDayIndex = {
@@ -17,12 +19,19 @@ export type setForecastIndex = {
     readonly payload: number;
 }
 
-type setInitialValues = {
-    readonly type: "setInitialValues";
-    readonly userLocation: IUserLocation;
-    readonly detailedDailyForecasts: IWeather;
+type setDetailedDailyForecast = {
+    readonly type: "setDetailedDailyForecast";
+    readonly payload: IWeather;
 }
-export type Actions = setDayIndex | setForecastIndex | setInitialValues ;
+type setUserLocation = {
+    readonly type: "setUserLocation";
+    readonly payload: IUserLocation;
+}
+type setLocationErrorMessage = {
+    readonly type: "setLocationErrorMessage";
+    readonly payload: string;
+}
+export type Actions = setDayIndex | setForecastIndex | setDetailedDailyForecast | setUserLocation | setLocationErrorMessage;
 
 export const reducer = (state: IState, actions: Actions): IState => {
     switch (actions.type) {
@@ -30,8 +39,13 @@ export const reducer = (state: IState, actions: Actions): IState => {
             return { ...state, dayIndex: actions.payload };
         case "setForecastIndex":
             return { ...state, forecastIndex: actions.payload };
-        case "setInitialValues":
-            return { ...state, userLocation: actions.userLocation, detailedDailyForecasts: actions.detailedDailyForecasts };
+        case "setDetailedDailyForecast":
+            return { ...state, detailedDailyForecasts: actions.payload, spinnerFlag: false };
+
+        case "setUserLocation":
+            return { ...state, userLocation: actions.payload }
+        case "setLocationErrorMessage":
+            return { ...state, locationErrorMessage: actions.payload };
         default:
             return state;
     }

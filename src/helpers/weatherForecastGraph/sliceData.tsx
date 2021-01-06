@@ -8,7 +8,7 @@ export const getGraphData = (detailedDailyForecasts: IWeather, dayIndex: number,
     if (detailedDailyForecasts !== null) {
         const { data } = detailedDailyForecasts;
         if (dayIndex === 0) {
-            for (let i = 0; i < 8; i++) {
+            for (let i = 0; i < NUMBER_OF_POINTS_IN_GRAPH; i++) {
                 values.push(data[i].temp);
                 labels.push(data[i].datetime.slice(-2) + ":" + "00");
             }

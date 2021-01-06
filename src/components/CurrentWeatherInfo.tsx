@@ -2,14 +2,23 @@ import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import { IMAGE_SIZE } from '../helpers/global/constants';
 import { IData } from '../helpers/global/interfaces';
+import { getDay } from './dailyWeatherForecast/getters';
 interface IProps {
     currentWeather: IData;
 }
 
 const CurrentWeatherInfo = ({ currentWeather }: IProps): JSX.Element => {
+    const getCurrentTime = ():string => {
+        const day: string = getDay(currentWeather.datetime.slice(0,10));
+        const hours: string = currentWeather.datetime.slice(-2) + ":" + "00";
+        return day + "  " + hours+"h";
+    }
     return (
         <View>
-            <Text style={styles.weatherDescriptionText}>{currentWeather.weather.description}</Text>
+            <View style={{flexDirection:'row',justifyContent:'space-between'}}>
+            <Text style={[styles.weatherDescriptionText]}>{currentWeather.weather.description}</Text>
+            <Text style={[styles.weatherDescriptionText]}>{getCurrentTime()}</Text>
+            </View>
             <View style={styles.informationContainer}>
                 <View style={styles.temperatureContainer}>
                     <Image source={{ uri: `https://www.weatherbit.io/static/img/icons/${currentWeather.weather.icon}.png` }} style={styles.imageSize} />
@@ -26,7 +35,6 @@ const CurrentWeatherInfo = ({ currentWeather }: IProps): JSX.Element => {
 }
 
 const styles = StyleSheet.create({
-
     informationContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between'
@@ -34,7 +42,8 @@ const styles = StyleSheet.create({
     weatherDescriptionText: {
         fontSize: 16,
         color: '#696969',
-        padding: 10
+        padding:10,
+        marginRight:10
     },
     imageSize: {
         width: IMAGE_SIZE,
