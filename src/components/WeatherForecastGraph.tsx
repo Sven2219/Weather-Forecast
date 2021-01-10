@@ -17,12 +17,12 @@ const WeatherForecastGraph = (): JSX.Element | null => {
     const firstTimeZeroHours = useRef<number>(0)
     useEffect(() => {
         if (state.detailedDailyForecasts !== null) {
-            firstTimeZeroHours.current = getFirstTimeZeroHours(state.detailedDailyForecasts?.data.slice(0, 11));
+            firstTimeZeroHours.current = getFirstTimeZeroHours([...state.detailedDailyForecasts?.data.slice(0, 11)]);
         }
     }, [])
     useEffect(() => {
         if (state.detailedDailyForecasts !== null) {
-            const graphData: IGraph = getGraphData(state.detailedDailyForecasts.data, state.dayIndex, firstTimeZeroHours.current);
+            const graphData: IGraph = getGraphData([...state.detailedDailyForecasts.data], state.dayIndex, firstTimeZeroHours.current);
             setGraphData(graphData);
             updateTemperatureIndex();
         }
